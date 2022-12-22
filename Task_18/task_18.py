@@ -3,7 +3,7 @@ import random
 from bisect import bisect_left
 
 
-def find_result(number_array, x):
+def find_result(number_array, X):
     pos = bisect_left(number_array, X)
     if pos == 0:
         return number_array[0]
@@ -28,18 +28,13 @@ while (True):
     except:
         print("неккоректный ввод числа")
 number_array = []
-if (len(number_array) % 2 == 0):
-    Up = int(N/2)
-else:
-    Up = int(N/2)+1
 for i in range(N):
-    number_array.append(random.randint(1, Up))
+    number_array.append(random.randint(1, N))
 print(number_array)
+number_array.sort()
 if (X <= 1):
-    # теория вероятности была давно забыта,поэтому не смог доказать математически. если при создании
-    # массива старт и конец randint всегда присутвуют в массиве то можно давать ответ и не создавая этот массив
     print("ближайшее число "+str(number_array[0]))
-elif (X >= N/2):
+elif (X >= N):
     print("ближайшее число "+str(number_array[-1]))
 else:
     print(find_result(number_array, X))
